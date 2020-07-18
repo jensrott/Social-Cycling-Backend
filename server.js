@@ -7,6 +7,7 @@ const chalk = require("chalk");
 
 const app = express();
 
+const host = "0.0.0.0";
 const port = process.env.PORT || 3001;
 const connectDB = require("./server/api/v1/config/mongoDb");
 const routes = require("./server/api/routes");
@@ -22,7 +23,7 @@ connectDB()
   });
 
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN,
+  origin: "*",
   methods: "GET,PUT,PATCH,POST,DELETE,OPTIONS",
   allowedHeaders:
     "X-Auth-Token, Content-Type, Origin, Authorization, Content-Length, X-Requested-With, Content-Disposition, Access-Control-Allow-Origin, Access-Control-Allow-Methods"
@@ -45,7 +46,7 @@ app.get("/", (req, res) => {
 
 app.use("", routes);
 
-app.listen(port, () =>
+app.listen(port, host, () =>
   console.log(
     chalk.blueBright(`Web server started on: http://localhost:${port} `)
   )
