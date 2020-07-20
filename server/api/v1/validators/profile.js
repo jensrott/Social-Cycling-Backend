@@ -6,15 +6,9 @@ module.exports = function validateProfileInput(data) {
 
   data.username = !isEmpty(data.username) ? data.username : "";
   data.level = !isEmpty(data.level) ? data.level : "";
-  data.social.youtube = !isEmpty(data.social.youtube)
-    ? data.social.youtube
-    : "";
-  data.social.instagram = !isEmpty(data.social.instagram)
-    ? data.social.instagram
-    : "";
-  data.social.twitter = !isEmpty(data.social.twitter)
-    ? data.social.twitter
-    : "";
+  data.youtube = !isEmpty(data.youtube) ? data.youtube : "";
+  data.instagram = !isEmpty(data.instagram) ? data.instagram : "";
+  data.twitter = !isEmpty(data.twitter) ? data.twitter : "";
 
   if (Validator.isEmpty(data.username)) {
     errors.username = "Username field is required";
@@ -28,15 +22,15 @@ module.exports = function validateProfileInput(data) {
     errors.level = "Skill level field is required";
   }
 
-  if (Validator.isEmail(data.social.youtube)) {
+  if (Validator.isEmail(data.youtube)) {
     errors.youtube = "Youtube cannot be an email";
   }
 
-  if (Validator.isEmail(data.social.instagram)) {
+  if (Validator.isEmail(data.instagram)) {
     errors.instagram = "Instagram cannot be an email";
   }
 
-  if (Validator.isEmail(data.social.twitter)) {
+  if (Validator.isEmail(data.twitter)) {
     errors.twitter = "Twitter cannot be an email";
   }
 
